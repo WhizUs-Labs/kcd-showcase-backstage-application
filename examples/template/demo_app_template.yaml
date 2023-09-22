@@ -33,7 +33,7 @@ spec:
           ui:field: RepoUrlPicker
           ui:options:
             allowedOwners:
-              - whizus/poc/kcd-platform-prototype
+              - whizus/poc/kcd-platform-prototype/demo-apps
             allowedHosts:
               - gitlab.com
 
