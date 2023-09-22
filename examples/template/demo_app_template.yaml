@@ -32,6 +32,8 @@ spec:
           type: string
           ui:field: RepoUrlPicker
           ui:options:
+            allowedOwners:
+              - whizus/poc/kcd-platform-prototype
             allowedHosts:
               - gitlab.com
 
@@ -43,8 +45,7 @@ spec:
       name: Fetch Base
       action: fetch:template
       input:
-        url: ./kcd_demo_app
-        #url: https://gitlab.com/whizus/poc/kcd-platform-prototype/kcd_demo_app
+        url: https://gitlab.com/whizus/poc/kcd-platform-prototype/kcd_demo_app
         values:
           name: ${{ parameters.name }}
 
