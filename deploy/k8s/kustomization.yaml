@@ -1,6 +1,0 @@
-resources:
-  - database.yaml
-  - deployment.yaml
-  - service.yaml
-
-namespace: backstage
