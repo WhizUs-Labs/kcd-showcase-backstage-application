@@ -27,22 +27,3 @@ backend:
       # ssl:
       #   ca: # if you have a CA file and want to verify it you can uncomment this section
       #     $file: <file-path>/ca/server.crt
-
-kubernetes:
-  serviceLocatorMethod:
-    type: 'multiTenant'
-  clusterLocatorMethods:
-    - type: 'config'
-      clusters:
-        - url: ${K8S_URL}
-          name: kcd-demo-sks
-          authProvider: 'serviceAccount'
-          serviceAccountToken: ${K8S_SA_TOKEN}
-
-proxy:
-  '/argocd/api':
-    target: ${ARGOCD_API_URL}
-    changeOrigin: true
-    headers:
-      Cookie:
-        $env: ARGOCD_AUTH_TOKEN
