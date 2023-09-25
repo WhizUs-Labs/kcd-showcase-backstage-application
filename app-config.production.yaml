@@ -33,5 +33,6 @@ kubernetes:
   clusterLocatorMethods:
     - type: 'config'
       clusters:
-        - name: kcd-demo-sks
+        - url: ${K8S_URL}
+          name: kcd-demo-sks
           authProvider: 'serviceAccount'
