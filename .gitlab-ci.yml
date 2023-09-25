@@ -2,19 +2,19 @@ variables:
   IMAGE_NAME: $CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME
 
 stages:
-  - build
+  # - build
   - containerize
 
-build:
-  stage: build
-  image: node:18-bullseye-slim
-  cache:
-    paths:
-    - node_modules/
-  script:
-    - yarn install --frozen-lockfile
-    - yarn tsc
-    - yarn build:backend --config ../../app-config.yaml
+# build:
+#   stage: build
+#   image: node:18-bullseye-slim
+#   cache:
+#     paths:
+#     - node_modules/
+#   script:
+#     - yarn install --frozen-lockfile
+#     - yarn tsc
+#     - yarn build:backend --config ../../app-config.yaml
 
 containerize:
   stage: containerize
