@@ -37,3 +37,11 @@ kubernetes:
         - url: ${K8S_URL}
           name: kcd-demo-sks
           authProvider: 'serviceAccount'
+
+proxy:
+  '/argocd/api':
+    target: ${ARGOCD_API_URL}
+    changeOrigin: true
+    headers:
+      Cookie:
+        $env: ARGOCD_AUTH_TOKEN
