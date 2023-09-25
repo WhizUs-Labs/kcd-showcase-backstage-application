@@ -29,7 +29,8 @@ backend:
       #     $file: <file-path>/ca/server.crt
 
 kubernetes:
-  serviceLocatorMethod: 'multiTenant'
+  serviceLocatorMethod:
+    type: 'multiTenant'
   clusterLocatorMethods:
     - type: 'config'
       clusters:
