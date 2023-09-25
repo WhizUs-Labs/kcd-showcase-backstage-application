@@ -37,6 +37,7 @@ kubernetes:
         - url: ${K8S_URL}
           name: kcd-demo-sks
           authProvider: 'serviceAccount'
+          serviceAccountToken: ${K8S_SA_TOKEN}
 
 proxy:
   '/argocd/api':
