@@ -31,7 +31,7 @@ backend:
 kubernetes:
   serviceLocatorMethod: 'multiTenant'
   clusterLocatorMethods:
-    - 'config'
-  clusters:
-    - name: kcd-demo-sks
-      authProvider: 'serviceAccount'
+    - type: 'config'
+      clusters:
+        - name: kcd-demo-sks
+          authProvider: 'serviceAccount'
