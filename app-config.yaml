@@ -1,5 +1,5 @@
 app:
-  title: Developer Portal
+  title: WhizUs Developer Portal
   baseUrl: http://localhost:3000
 
 organization:
@@ -81,22 +81,22 @@ catalog:
   locations:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
-      target: ../../examples/entities.yaml
+      target: ./examples/entities.yaml
 
     # Local example template
     - type: file
-      target: ../../examples/template/template.yaml
+      target: ./examples/template/template.yaml
       rules:
         - allow: [Template]
-          
+
     - type: file
-      target: ../../examples/template/demo_app_template.yaml
+      target: ./examples/template/demo_app_template.yaml
       rules:
         - allow: [ Template ]
-          
+
     # Local example organizational data
     - type: file
-      target: ../../examples/org.yaml
+      target: ./examples/org.yaml
       rules:
         - allow: [User, Group]
 
