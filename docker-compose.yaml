@@ -11,10 +11,8 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_USER=technical
       - POSTGRES_PASSWORD=supersecret
-      - AUTH_GITHUB_CLIENT_ID=
-      - AUTH_GITHUB_CLIENT_SECRET=
-      - GITHUB_TOKEN=
-      - GITHUB_ORGS=WhizUs-Labs
+    env_file:
+      - .env
     depends_on:
       - postgres
     mem_limit: 1024m
