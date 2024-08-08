@@ -39,8 +39,8 @@ jobs:
       packages: write
       id-token: write
     env:
-      IMAGE_TAG: ghcr.io/WhizUs-Labs/kcd-backstage:${{ needs.release-please.outputs.tag_name }}
-      IMAGE_FULL_NAME: ghcr.io/WhizUs-Labs/kcd-backstage
+      IMAGE_TAG: ghcr.io/whizus-labs/kcd-backstage:${{ needs.release-please.outputs.tag_name }}
+      IMAGE_FULL_NAME: ghcr.io/whizus-labs/kcd-backstage
       IMAGE_NAME: kcd-backstage
     steps:
       - name: Checkout
