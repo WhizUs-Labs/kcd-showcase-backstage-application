@@ -1,0 +1,21 @@
+name: semantic_pr
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+defaults:
+  run:
+    shell: bash
+jobs:
+  validate:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Validate Pull Request
+        uses: amannn/action-semantic-pull-request@0723387faaf9b38adef4775cd42cfd5155ed6017
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
