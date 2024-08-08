@@ -60,11 +60,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Cosign
-        uses: sigstore/cosign-installer@59acb6260d9c0ba8f4a2f9d9b48431a222b68e20
+        uses: sigstore/cosign-installer@4959ce089c160fddf62f7b42464195ba1a56d382
 
       - name: Build Docker Image
         id: docker_build_image
-        uses: docker/build-push-action@5176d81f87c23d6fc96624dfdbcd9f3830bbe445
+        uses: docker/build-push-action@16ebe778df0e7752d2cfcbd924afdbbd89c1a755
         with:
           context: .
           file: ./Dockerfile
@@ -113,7 +113,7 @@ jobs:
             ${{ env.IMAGE_FULL_NAME }}@${{ env.IMAGE_DIGEST }}
 
       - name: Upload verification log as artifact
-        uses: actions/upload-artifact@89ef406dd8d7e03cfd12d9e0a4a378f454709029
+        uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a
         with:
           name: cosign-attest-verification-log
           path: ./cosign-attest-output.json
