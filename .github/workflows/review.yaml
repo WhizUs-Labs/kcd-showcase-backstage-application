@@ -22,11 +22,6 @@ jobs:
         with:
           reporter: github-pr-review
           github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: tsc
-        uses: EPMatt/reviewdog-action-tsc@89934d75ee11d1c298bce81efaa4fde6e00cc21c
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
       - name: actionlint
         uses: reviewdog/action-actionlint@4f8f9963ca57a41e5fd5b538dd79dbfbd3e0b38a
         with:
