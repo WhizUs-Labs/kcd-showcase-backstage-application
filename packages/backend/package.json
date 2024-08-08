@@ -40,7 +40,7 @@
     "@backstage/plugin-search-backend-node": "^1.2.26",
     "@backstage/plugin-techdocs-backend": "^1.10.8",
     "app": "link:../app",
-    "better-sqlite3": "^9.0.0",
+    "better-sqlite3": "^11.1.2",
     "node-gyp": "^10.0.0",
     "pg": "^8.11.3",
     "winston": "^3.2.1"
