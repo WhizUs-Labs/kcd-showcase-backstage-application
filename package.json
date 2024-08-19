@@ -39,7 +39,7 @@
     "lerna": "^8.1.8",
     "node-gyp": "^10.0.0",
     "prettier": "^2.3.2",
-    "typescript": "~5.4.0"
+    "typescript": "~5.5.4"
   },
   "resolutions": {
     "@types/react": "^18",
