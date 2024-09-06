@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/compare/kcd-backstage-v3.0.0...kcd-backstage-v3.0.1) (2024-09-06)
+
+
+### Bug Fixes
+
+* make backstage baseurl configurable ([52b5497](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/commit/52b5497e01ac51d2c5caa9157f8d0b33ef938f1d))
+
 ## [3.0.0](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/compare/kcd-backstage-v2.0.0...kcd-backstage-v3.0.0) (2024-08-09)
 
 
