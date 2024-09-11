@@ -9,6 +9,7 @@ services:
       - POSTGRES_PORT=5432
       - POSTGRES_USER=technical
       - POSTGRES_PASSWORD=supersecret
+      - BACKSTAGE_BASEURL=http://localhost:7007
     env_file:
       - .env
     depends_on:
