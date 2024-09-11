@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/compare/kcd-backstage-v3.0.1...kcd-backstage-v3.1.0) (2024-09-11)
+
+
+### Features
+
+* add new app workflow template ([#31](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/issues/31)) ([888fc15](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/commit/888fc1545b0a98124ccf34404007b9f35a6a2a75))
+
 ## [3.0.1](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/compare/kcd-backstage-v3.0.0...kcd-backstage-v3.0.1) (2024-09-06)
 
 
