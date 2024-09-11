@@ -1,28 +1,32 @@
 apiVersion: scaffolder.backstage.io/v1beta3
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template
 kind: Template
 metadata:
-  name: example-nodejs-template
-  title: Example Node.js Template
-  description: An example template for the scaffolder that creates a simple Node.js service
+  name: create-new-kcd-showcase-app
+  title: Create a new KCD showcase app
+  description: Clones the base KCD showcase app into a new repository to create a new app.
 spec:
-  owner: user:guest
+  owner: user:singhmanavjot
   type: service
-
-  # These parameters are used to generate the input form in the frontend, and are
-  # used to gather input data for the execution of the template.
   parameters:
-    - title: Fill in some steps
+    - title: Fill in required metadata
       required:
         - name
       properties:
         name:
-          title: Name
+          title: App Name
           type: string
-          description: Unique name of the component
+          descripton: Name of the app
           ui:autofocus: true
           ui:options:
             rows: 5
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            catalogFilter:
+              kind: [Group, User]
     - title: Choose a location
       required:
         - repoUrl
@@ -32,22 +36,19 @@ spec:
           type: string
           ui:field: RepoUrlPicker
           ui:options:
+            allowedOwners:
+              - WhizUs-Labs
             allowedHosts:
               - github.com
-
-  # These steps are executed in the scaffolder backend, using data that we gathered
-  # via the parameters above.
   steps:
-    # Each step executes an action, in this case one templates files into the working directory.
     - id: fetch-base
       name: Fetch Base
       action: fetch:template
       input:
-        url: ./content
+        url: https://github.com/WhizUs-Labs/kcd-showcase-trw-demo-app
         values:
           name: ${{ parameters.name }}
-
-    # This step publishes the contents of the working directory to GitHub.
+          owner: ${{ parameters.owner }}
     - id: publish
       name: Publish
       action: publish:github
@@ -55,16 +56,21 @@ spec:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
-
-    # The final step is to register our new component in the catalog.
+    - id: github-action
+      name: Trigger GitHub Action
+      action: github:actions:dispatch
+      input:
+        workflowId: onboard-app.yaml
+        repoUrl: github.com?repo=kcd-showcase-service-cluster-template-gitops&owner=WhizUs-Labs
+        branchOrTagName: 'main'
+        workflowInputs:
+          name: ${{ parameters.name }}
     - id: register
       name: Register
       action: catalog:register
       input:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
         catalogInfoPath: '/catalog-info.yaml'
-
-  # Outputs are displayed to the user after a successful execution of the template.
   output:
     links:
       - title: Repository
