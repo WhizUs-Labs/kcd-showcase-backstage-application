@@ -28,6 +28,13 @@ backend:
       #   ca: # if you have a CA file and want to verify it you can uncomment this section
       #     $file: <file-path>/ca/server.crt
 
+proxy:
+  '/argocd/api':
+    target: ${ARGOCD_BASEURL}/api/v1/
+    changeOrigin: true
+    headers:
+      Cookie: 'argocd.token=${ARGOCD_AUTH_TOKEN}'
+
 auth:
   environment: production
   providers:
@@ -54,3 +61,6 @@ catalog:
         initialDelay: { seconds: 30 }
         frequency: { hours: 1 }
         timeout: { minutes: 50 }
+
+argocd:
+  baseUrl: ${ARGOCD_BASEURL}
