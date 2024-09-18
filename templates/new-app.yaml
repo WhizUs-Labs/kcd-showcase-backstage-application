@@ -34,6 +34,7 @@ spec:
         repoUrl:
           title: Repository Location
           type: string
+          description: Repository name should start with "kcd-showcase-app-"
           ui:field: RepoUrlPicker
           ui:options:
             allowedOwners:
@@ -56,6 +57,7 @@ spec:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: main
     - id: github-action
       name: Trigger GitHub Action
       action: github:actions:dispatch

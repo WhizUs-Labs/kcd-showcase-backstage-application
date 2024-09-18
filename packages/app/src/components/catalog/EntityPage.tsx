@@ -50,9 +50,20 @@ import {
   RELATION_PART_OF,
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
-
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
+import {
+  EntityArgoCDOverviewCard,
+  isArgocdAvailable
+} from '@roadiehq/backstage-plugin-argo-cd';
+import {
+  EntityGithubActionsContent,
+  isGithubActionsAvailable,
+} from '@backstage-community/plugin-github-actions';
+import {
+  EntityGithubPullRequestsContent,
+  EntityGithubPullRequestsOverviewCard
+} from '@roadiehq/backstage-plugin-github-pull-requests';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -63,16 +74,11 @@ const techdocsContent = (
 );
 
 const cicdContent = (
-  // This is an example of how you can implement your company's logic in entity page.
-  // You can for example enforce that all components of type 'service' should use GitHubActions
   <EntitySwitch>
-    {/*
-      Here you can add support for different CI/CD services, for example
-      using @backstage-community/plugin-github-actions as follows:
-      <EntitySwitch.Case if={isGithubActionsAvailable}>
-        <EntityGithubActionsContent />
-      </EntitySwitch.Case>
-    */}
+    <EntitySwitch.Case if={isGithubActionsAvailable}>
+      <EntityGithubActionsContent view='cards' />
+    </EntitySwitch.Case>
+
 
     <EntitySwitch.Case>
       <EmptyState
@@ -137,6 +143,16 @@ const overviewContent = (
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
+    <Grid item md={6}>
+        <EntityGithubPullRequestsOverviewCard />
+      </Grid>
+    <EntitySwitch>
+      <EntitySwitch.Case if={e => Boolean(isArgocdAvailable(e))}>
+        <Grid item sm={4}>
+          <EntityArgoCDOverviewCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
   </Grid>
 );
 
@@ -148,6 +164,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/pull-requests" title="Pull Requests">
+      <EntityGithubPullRequestsContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">
