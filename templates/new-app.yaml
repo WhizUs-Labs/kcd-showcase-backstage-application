@@ -34,6 +34,7 @@ spec:
         repoUrl:
           title: Repository Location
           type: string
+          description: Repository name should start with "kcd-showcase-app-"
           ui:field: RepoUrlPicker
           ui:options:
             allowedOwners:
