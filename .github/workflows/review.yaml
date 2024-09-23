@@ -13,17 +13,17 @@ jobs:
       - name: Check out code
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
       - name: hadolint
-        uses: reviewdog/action-hadolint@2d90b15b2b969e507fc2a31af6e29ca19a0f9516
+        uses: reviewdog/action-hadolint@73fec8b28091e5082c19df69815dd749d97b882a
         with:
           reporter: github-pr-review
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: markdownlint
-        uses: reviewdog/action-markdownlint@e9f3ab4fea1433280a4b0eddca17be1340dfea94
+        uses: reviewdog/action-markdownlint@28fb4224271253fedd5079b61de820d6228041fd
         with:
           reporter: github-pr-review
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: actionlint
-        uses: reviewdog/action-actionlint@4f8f9963ca57a41e5fd5b538dd79dbfbd3e0b38a
+        uses: reviewdog/action-actionlint@05c9d7bef25a46caf572df3497afa7082fc111df
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
