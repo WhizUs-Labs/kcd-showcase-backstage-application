@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/compare/kcd-backstage-v3.1.0...kcd-backstage-v3.2.0) (2024-09-18)
+
+
+### Features
+
+* add argocd, github actions and github pull request plugins to component overview ([#36](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/issues/36)) ([fe4de33](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/commit/fe4de33ed7ca1b5c657e7f219f425a55678c5af4))
+
 ## [3.1.0](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/compare/kcd-backstage-v3.0.1...kcd-backstage-v3.1.0) (2024-09-11)
 
 
