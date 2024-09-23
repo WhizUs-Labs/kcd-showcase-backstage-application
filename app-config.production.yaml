@@ -34,6 +34,10 @@ proxy:
     changeOrigin: true
     headers:
       Cookie: 'argocd.token=${ARGOCD_AUTH_TOKEN}'
+  '/grafana/api':
+    target: ${GRAFANA_BASEURL}/
+    headers:
+      Authorization: 'Bearer ${GRAFANA_TOKEN}'
 
 auth:
   environment: production
@@ -52,6 +56,7 @@ auth:
             - resolver: usernameMatchingUserEntityName
 
 catalog:
+  orphanStrategy: delete
   providers:
     githubOrg:
       id: production
@@ -61,6 +66,35 @@ catalog:
         initialDelay: { seconds: 30 }
         frequency: { hours: 1 }
         timeout: { minutes: 50 }
+    github:
+      whizusLabs:
+        organization: '${GITHUB_ORGS}'
+        catalogPath: '/catalog-info.yaml'
+        filters:
+          repository: '^kcd-(?!showcase-trw-demo-app$).*'
+        schedule:
+          initialDelay: { seconds: 30 }
+          frequency: { hours: 1 }
+          timeout: { minutes: 50 }
 
 argocd:
   baseUrl: ${ARGOCD_BASEURL}
+
+grafana:
+  domain: ${GRAFANA_BASEURL}
+  # Is unified alerting enabled in Grafana?
+  # See: https://grafana.com/blog/2021/06/14/the-new-unified-alerting-system-for-grafana-everything-you-need-to-know/
+  # Optional. Default: false
+  unifiedAlerting: false
+
+kubernetes:
+  serviceLocatorMethod:
+    type: multiTenant
+  clusterLocatorMethods:
+    - type: config
+      clusters:
+        - url: ${KCD_SERVICE_CLUSTER_URL}
+          name: kcd-service-cluster
+          authProvider: serviceAccount
+          serviceAccountToken: ${KCD_SERVICE_CLUSTER_SA_TOKEN}
+          caData: ${KCD_SERVICE_CLUSTER_CA_DATA}
