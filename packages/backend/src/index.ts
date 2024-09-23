@@ -22,6 +22,7 @@ backend.add(import('@backstage/plugin-auth-backend-module-github-provider'));
 // catalog plugin
 backend.add(import('@backstage/plugin-catalog-backend/alpha'));
 backend.add(import('@backstage/plugin-catalog-backend-module-github-org'));
+backend.add(import('@backstage/plugin-catalog-backend-module-github/alpha'));
 backend.add(
   import('@backstage/plugin-catalog-backend-module-scaffolder-entity-model'),
 );
@@ -41,4 +42,6 @@ backend.add(
 backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
+// kubernetes plugin
+backend.add(import('@backstage/plugin-kubernetes-backend/alpha'));
 backend.start();

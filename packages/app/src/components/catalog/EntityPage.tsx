@@ -64,6 +64,11 @@ import {
   EntityGithubPullRequestsContent,
   EntityGithubPullRequestsOverviewCard
 } from '@roadiehq/backstage-plugin-github-pull-requests';
+import {
+  EntityGrafanaDashboardsCard,
+  // EntityGrafanaAlertsCard
+} from '@backstage-community/plugin-grafana';
+import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -136,23 +141,29 @@ const overviewContent = (
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
-
-    <Grid item md={4} xs={12}>
-      <EntityLinksCard />
-    </Grid>
-    <Grid item md={8} xs={12}>
-      <EntityHasSubcomponentsCard variant="gridItem" />
-    </Grid>
-    <Grid item md={6}>
-        <EntityGithubPullRequestsOverviewCard />
-      </Grid>
     <EntitySwitch>
       <EntitySwitch.Case if={e => Boolean(isArgocdAvailable(e))}>
-        <Grid item sm={4}>
+        <Grid item sm={6}>
           <EntityArgoCDOverviewCard />
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
+    <Grid item md={6}>
+      <EntityGithubPullRequestsOverviewCard />
+    </Grid>
+    <Grid item md={6}>
+      <EntityGrafanaDashboardsCard />
+    </Grid>
+    {/* Disables Grafana alert card for now as there are now alters configured*/}
+    {/* <Grid item md={6}>
+      <EntityGrafanaAlertsCard />
+    </Grid> */}
+    <Grid item md={6} xs={12}>
+      <EntityLinksCard />
+    </Grid>
+    <Grid item md={6} xs={12}>
+      <EntityHasSubcomponentsCard variant="gridItem" />
+    </Grid>
   </Grid>
 );
 
@@ -168,6 +179,10 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/pull-requests" title="Pull Requests">
       <EntityGithubPullRequestsContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+      <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">
