@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/compare/kcd-backstage-v3.2.0...kcd-backstage-v3.3.0) (2024-09-23)
+
+
+### Features
+
+* add grafana and kubernetes plugins, configure auto discovery for catalog ([#39](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/issues/39)) ([867dfbe](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/commit/867dfbe292aeb9ba8f69818582a98b80842eac9e))
+
 ## [3.2.0](https://github.com/WhizUs-Labs/kcd-showcase-backstage-application/compare/kcd-backstage-v3.1.0...kcd-backstage-v3.2.0) (2024-09-18)
 
 
