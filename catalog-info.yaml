@@ -6,6 +6,6 @@ metadata:
   annotations:
     github.com/project-slug: WhizUs-Labs/kcd-showcase-backstage-application
 spec:
-  type: website
+  type: service
   owner: user:default/singhmanavjot
   lifecycle: experimental
